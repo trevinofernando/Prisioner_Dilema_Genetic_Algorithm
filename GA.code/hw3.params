@@ -1,6 +1,6 @@
-Experiment ID                :numbermatch
-Problem Type                 :NM
-Data Input File Name         :indata.NM.txt
+Experiment ID                :prisonersdilemma
+Problem Type                 :PD
+Data Input File Name         :indata.PD.txt
 Number of Runs               :3
 Generations per Run          :100
 Population Size              :100
