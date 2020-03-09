@@ -1,6 +1,6 @@
-Experiment ID                :prisonersdilemma
-Problem Type                 :PD
-Data Input File Name         :indata.PD.txt
+Experiment ID                :iteratedprisonersdilemma
+Problem Type                 :IPD
+Data Input File Name         :indata.IPD.txt
 Number of Runs               :3
 Generations per Run          :100
 Population Size              :100
