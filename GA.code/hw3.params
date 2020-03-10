@@ -11,8 +11,8 @@ Crossover Rate (4)           :1.0
 Mutation Type (5)            :1
 Mutation Rate (6)            :.01
 Random Number Seed           :75982
-Number of Genes/Points (7)   :8
-Size of Genes (18)           :9
+Number of Genes/Points (7)   :4
+Size of Genes (18)           :1
 
 Notes:
 
@@ -28,6 +28,7 @@ Notes:
 3)  Crossover Type Codes    1 = Single Point Crossover
 							2 = Two Point Crossover
 							3 = Uniform Crossover
+							4 = Weighted average Crossover
 
 4)  Crossover Rates from 0 to 1, Use "0" to turn off crossover
 
