@@ -29,6 +29,7 @@ Notes:
 							2 = Two Point Crossover
 							3 = Uniform Crossover
 							4 = Uniform Average Crossover
+							5 = Uniform Weighted Average Crossover
 
 4)  Crossover Rates from 0 to 1, Use "0" to turn off crossover
 

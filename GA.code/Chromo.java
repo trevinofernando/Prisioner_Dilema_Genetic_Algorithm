@@ -30,7 +30,7 @@ public class Chromo {
 
 	public Chromo() {
 
-		// Set gene values to a randum sequence of 1's and 0's
+		// Set gene values to a randnum sequence of 1's and 0's
 		chromo = new ArrayList<Double>(Parameters.numGenes);
 		for (int i = 0; i < Parameters.numGenes; i++) {
 			chromo.add(Search.r.nextDouble());
@@ -140,6 +140,7 @@ public class Chromo {
 
 		int xoverPoint1;
 		int xoverPoint2;
+		double avg;
 
 		switch (Parameters.xoverType) {
 
@@ -192,8 +193,6 @@ public class Chromo {
 
 			case 4: // Uniform Average Crossover
 
-				double avg;
-
 				for (int i = 0; i < Parameters.numGenes; i++) {
 					if (Parameters.xoverRate > Search.r.nextDouble()) {
 						child1.chromo.set(i, parent1.chromo.get(i));
@@ -205,6 +204,23 @@ public class Chromo {
 					}
 				}
 
+				break;
+			case 5: // Uniform Weighted Average Crossover
+
+				for (int i = 0; i < Parameters.numGenes; i++) {
+					if (Parameters.xoverRate > Search.r.nextDouble()) {
+						child1.chromo.set(i, parent1.chromo.get(i));
+						child2.chromo.set(i, parent2.chromo.get(i));
+					} else {
+						avg = (parent1.chromo.get(i) * parent1.chromo.proFitness
+								+ parent2.chromo.get(i) * parent2.chromo.proFitness)
+								/ (parent1.chromo.proFitness + parent2.chromo.proFitness);
+						child1.chromo.set(i, avg);
+						child2.chromo.set(i, avg);
+					}
+				}
+
+				break;
 			default:
 				System.out.println("ERROR - Bad crossover method selected");
 		}
