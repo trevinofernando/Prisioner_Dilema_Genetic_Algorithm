@@ -61,15 +61,15 @@ public class Chromo {
 
 		switch (Parameters.mutationType) {
 
-			case 1: // Replace with new random number
+			case 1: // add/sub 1% and keep number in range 0-1
 
 				for (int i = 0; i < (Parameters.geneSize * Parameters.numGenes); i++) {
 					if (Search.r.nextDouble() < Parameters.mutationRate) {
 						// 50-50 chance of adding/subtracting 1%
 						if (Search.r.nextDouble() < 0.5) {
-							chromo.set(i, chromo.get((i)) + 0.01);
+							chromo.set(i, Math.min(Math.max(chromo.get((i)) + 0.01, min), max));
 						} else {
-							chromo.set(i, chromo.get((i)) - 0.01);
+							chromo.set(i, Math.min(Math.max(chromo.get((i)) - 0.01, min), max));
 						}
 					}
 				}
@@ -145,17 +145,65 @@ public class Chromo {
 
 			case 1: // Single Point Crossover
 
-				// Select crossover point
-				xoverPoint1 = 1 + (int) (Search.r.nextDouble() * (Parameters.numGenes * Parameters.geneSize - 1));
+				xoverPoint1 = Search.r.nextInt(Parameters.numGenes - 1);
 
-				// Create child chromosome from parental material
-				child1.chromo = parent1.chromo.substring(0, xoverPoint1) + parent2.chromo.substring(xoverPoint1);
-				child2.chromo = parent2.chromo.substring(0, xoverPoint1) + parent1.chromo.substring(xoverPoint1);
+				for (int i = 0; i < Parameters.numGenes; i++) {
+					if (i <= xoverPoint1) {
+						child1.chromo.set(i, parent1.chromo.get(i));
+						child2.chromo.set(i, parent2.chromo.get(i));
+					} else {
+						child1.chromo.set(i, parent2.chromo.get(i));
+						child2.chromo.set(i, parent1.chromo.get(i));
+					}
+				}
+
 				break;
 
 			case 2: // Two Point Crossover
 
+				do {
+					xoverPoint1 = Search.r.nextInt(Parameters.numGenes - 1);
+					xoverPoint2 = Search.r.nextInt(Parameters.numGenes - 1);
+				} while (xoverPoint1 == xoverPoint2);
+
+				for (int i = 0; i < Parameters.numGenes; i++) {
+					if (i <= xoverPoint1 || i >= xoverPoint2) {
+						child1.chromo.set(i, parent1.chromo.get(i));
+						child2.chromo.set(i, parent2.chromo.get(i));
+					} else {
+						child1.chromo.set(i, parent2.chromo.get(i));
+						child2.chromo.set(i, parent1.chromo.get(i));
+					}
+				}
+				break;
+
 			case 3: // Uniform Crossover
+
+				for (int i = 0; i < Parameters.numGenes; i++) {
+					if (Parameters.xoverRate > Search.r.nextDouble()) {
+						child1.chromo.set(i, parent1.chromo.get(i));
+						child2.chromo.set(i, parent2.chromo.get(i));
+					} else {
+						child1.chromo.set(i, parent2.chromo.get(i));
+						child2.chromo.set(i, parent1.chromo.get(i));
+					}
+				}
+				break;
+
+			case 4: // Uniform Average Crossover
+
+				double avg;
+
+				for (int i = 0; i < Parameters.numGenes; i++) {
+					if (Parameters.xoverRate > Search.r.nextDouble()) {
+						child1.chromo.set(i, parent1.chromo.get(i));
+						child2.chromo.set(i, parent2.chromo.get(i));
+					} else {
+						avg = (parent1.chromo.get(i) + parent2.chromo.get(i)) / 2;
+						child1.chromo.set(i, avg);
+						child2.chromo.set(i, avg);
+					}
+				}
 
 			default:
 				System.out.println("ERROR - Bad crossover method selected");
