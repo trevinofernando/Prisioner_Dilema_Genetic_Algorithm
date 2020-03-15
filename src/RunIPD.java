@@ -11,7 +11,7 @@ public class RunIPD extends Object {
     * Main program to start IPD program.
     */
 
-   public static void main(String args[]) {
+   public static int main(String args[]) {
       int i;
       int maxSteps = 0;
 
@@ -34,7 +34,7 @@ public class RunIPD extends Object {
       ipd.runSteps(maxSteps);
 
       System.out.printf(" Player 1 score = %d\n", ipd.player1Score());
-      System.out.printf(" Player 2 score = %d\n", ipd.player2Score());
-
+      // System.out.printf(" Player 2 score = %d\n", ipd.player2Score());
+      return ipd.player1Score();
    } /* main */
 } /* class RunIPD */

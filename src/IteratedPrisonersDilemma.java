@@ -29,13 +29,12 @@ public class IteratedPrisonersDilemma extends FitnessFunction {
 
     public void doRawFitness(Chromo X) {
         // TODO
-        System.out.println("doRawFitness not yet implemented for IteratedPrisonersDilemma");
+        // System.out.println("doRawFitness not yet implemented for
+        // IteratedPrisonersDilemma");
+        String[] arguments = { Double.toString(X.chromo.get(0)), Double.toString(X.chromo.get(1)), "-L",
+                Integer.toString(Parameters.maxSteps) };
 
-        // X.rawFitness = 0;
-        // for (int z = 0; z < Parameters.numGenes * Parameters.geneSize; z++) {
-        // if (X.chromo.charAt(z) == '1')
-        // X.rawFitness += 1;
-        // }
+        X.rawFitness = RunIPD.main(arguments);
 
     }
 

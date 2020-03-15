@@ -91,7 +91,6 @@ public class Chromo implements Comparable<Chromo> {
 
 		double rWheel = 0;
 		int j = 0;
-		int k = 0;
 
 		switch (Parameters.selectType) {
 
