@@ -18,6 +18,7 @@ public class StrategyByGA extends Strategy {
 
     public StrategyByGA(double ProbabilityOfCooperatingGivenCooperatation,
             double ProbabilityOfCooperatingGivenDefectiontion) {
+
         name = "Strategy Developed by the Genetic Algorithm";
         r.setSeed(75982);
         opponentLastMove = 1;

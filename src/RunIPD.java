@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+
 /**
  * General class containing main program to run the iterated Prisoner's Dilemma
  * (IPD).
@@ -21,10 +23,11 @@ public class RunIPD extends Object {
          if (args[i].equals("-l") || args[i].equals("-L")) {
             maxSteps = Integer.parseInt(args[i + 1]);
             System.out.println(" Max steps = " + maxSteps);
+            break;
          } /* if */
       } /* for i */
 
-      player1 = new StrategyTitForTwoTats();
+      player1 = new StrategyByGA(new BigDecimal(args[0]).doubleValue(), new BigDecimal(args[1]).doubleValue());
       player2 = new StrategyTitForTat();
       ipd = new IteratedPD(player1, player2);
 
