@@ -12,7 +12,8 @@ Mutation Type (5)            :1
 Mutation Rate (6)            :.01
 Random Number Seed           :75982
 Number of Genes/Points (7)   :4
-Size of Genes (18)           :1
+Size of Genes (8)            :1
+IPD Max Steps (9)            :7
 
 Notes:
 
@@ -41,3 +42,5 @@ Notes:
 
 8)	Determines number of bits in each gene.  Number of Genes times Size
 	gives the number of bits in each chromosome.
+
+9)  Maximum number of steps/rounds the Iterated Prisoners Dilemma problem will do.
