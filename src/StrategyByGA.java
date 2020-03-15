@@ -12,7 +12,6 @@ public class StrategyByGA extends Strategy {
      */
     double proCoopGivCoop;
     double proCoopGivDef;
-    Random r = new Random();
 
     // 0 = defect, 1 = cooperate
 
@@ -20,7 +19,6 @@ public class StrategyByGA extends Strategy {
             double ProbabilityOfCooperatingGivenDefectiontion) {
 
         name = "Strategy Developed by the Genetic Algorithm";
-        r.setSeed(75982);
         opponentLastMove = 1;
         proCoopGivCoop = ProbabilityOfCooperatingGivenCooperatation;
         proCoopGivDef = ProbabilityOfCooperatingGivenDefectiontion;
@@ -37,7 +35,7 @@ public class StrategyByGA extends Strategy {
         }
 
         // Decision given on random chance
-        if (p > r.nextDouble()) {
+        if (p > Search.r.nextDouble()) {
             return 1;
         } else {
             return 0;
