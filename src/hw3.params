@@ -1,17 +1,17 @@
 Experiment ID                :IteratedPrisonersDilemma
 Problem Type                 :IPD
 Data Input File Name         :indata.IPD.txt
-Number of Runs               :3
-Generations per Run          :100
-Population Size              :100
-Selection Method (1)         :1
-Fitness Scaling Type (2)     :1
-Crossover Type (3)           :1
+Number of Runs               :100
+Generations per Run          :500
+Population Size              :1000
+Selection Method (1)         :2
+Fitness Scaling Type (2)     :0
+Crossover Type (3)           :5
 Crossover Rate (4)           :1.0
 Mutation Type (5)            :1
 Mutation Rate (6)            :.01
 Random Number Seed           :75982
-Number of Genes/Points (7)   :4
+Number of Genes/Points (7)   :2
 Size of Genes (8)            :1
 IPD Max Steps (9)            :7
 
@@ -34,7 +34,7 @@ Notes:
 
 4)  Crossover Rates from 0 to 1, Use "0" to turn off crossover
 
-5)  Mutation Type Codes     1 = Flip Bit
+5)  Mutation Type Codes     1 = add/sub 1%
 
 6)  Mutation Rates from 0 to 1, Use "0" to turn off mutation
 
