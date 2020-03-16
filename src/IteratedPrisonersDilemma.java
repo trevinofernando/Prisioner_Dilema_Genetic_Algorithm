@@ -44,18 +44,19 @@ public class IteratedPrisonersDilemma extends FitnessFunction {
     public void doPrintGenes(Chromo X, FileWriter output) throws java.io.IOException {
 
         // TODO
-        System.out.println("doPrintGenes not yet implemented for IteratedPrisonersDilemma");
+        // System.out.println("doPrintGenes not yet implemented for
+        // IteratedPrisonersDilemma");
 
-        // for (int i = 0; i < Parameters.numGenes; i++) {
-        // Hwrite.right(X.getGeneAlpha(i), 11, output);
-        // }
-        // output.write(" RawFitness");
-        // output.write("\n ");
-        // for (int i = 0; i < Parameters.numGenes; i++) {
-        // Hwrite.right(X.getPosIntGeneValue(i), 11, output);
-        // }
-        // Hwrite.right((int) X.rawFitness, 13, output);
-        // output.write("\n\n");
+        for (int i = 0; i < Parameters.numGenes; i++) {
+            Hwrite.right(X.getGeneAlpha(i), 11, output);
+        }
+        output.write(" RawFitness");
+        output.write("\n ");
+        for (int i = 0; i < Parameters.numGenes; i++) {
+            Hwrite.right(X.getPosIntGeneValue(i), 11, output);
+        }
+        Hwrite.right((int) X.rawFitness, 13, output);
+        output.write("\n\n");
 
         return;
     }

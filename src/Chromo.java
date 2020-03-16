@@ -233,6 +233,20 @@ public class Chromo implements Comparable<Chromo> {
 		child2.proFitness = -1; // Fitness not yet proportionalized
 	}
 
+	// Get Alpha Represenation of a Gene **************************************
+
+	public Double getGeneAlpha(int geneID) {
+		return this.chromo.get(geneID);
+	}
+
+	// Get Integer Value of a Gene (Positive or Negative, 2's Compliment) ****
+
+	// Get Integer Value of a Gene (Positive only) ****************************
+
+	public int getPosIntGeneValue(int geneID) {
+		return 0;
+	}
+
 	// Produce a new child from a single parent ******************************
 
 	public static void mateParents(int pnum, Chromo parent, Chromo child) {
