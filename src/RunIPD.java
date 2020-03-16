@@ -10,6 +10,7 @@ public class RunIPD extends Object {
    /**
     * Main program to start IPD program.
     */
+   public static boolean debugModeOn = false;
 
    public static int main(String args[]) {
       int i;
@@ -24,19 +25,22 @@ public class RunIPD extends Object {
          /* check parameters */
          if (args[i].equals("-l") || args[i].equals("-L")) {
             maxSteps = Integer.parseInt(args[i + 1]);
-            System.out.println(" Max steps = " + maxSteps);
+            if (debugModeOn) {
+               System.out.println(" Max steps = " + maxSteps);
+            }
             break;
          } /* if */
       } /* for i */
 
       player1 = new StrategyByGA(new BigDecimal(args[0]).doubleValue(), new BigDecimal(args[1]).doubleValue());
       // player2 = new StrategyTitForTat();
-      ipd = new IteratedPD(player1, player2[Search.r.nextInt() % player2.length]);
+      ipd = new IteratedPD(player1, player2[Math.abs(Search.r.nextInt()) % player2.length]);
 
       ipd.runSteps(maxSteps);
-
-      System.out.printf(" Player 1 score = %d\n", ipd.player1Score());
-      // System.out.printf(" Player 2 score = %d\n", ipd.player2Score());
+      if (debugModeOn) {
+         System.out.printf(" Player 1 score = %d\n", ipd.player1Score());
+         System.out.printf(" Player 2 score = %d\n", ipd.player2Score());
+      }
       return ipd.player1Score();
    } /* main */
 } /* class RunIPD */

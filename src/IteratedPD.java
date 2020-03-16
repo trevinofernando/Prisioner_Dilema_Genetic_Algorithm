@@ -23,7 +23,9 @@ public class IteratedPD extends Object {
       p1Score = 0;
       p2Score = 0;
 
-      System.out.printf(" Player 1 is %s, Player 2 is %s\n", p1.getName(), p2.getName());
+      if (RunIPD.debugModeOn) {
+         System.out.printf(" Player 1 is %s, Player 2 is %s\n", p1.getName(), p2.getName());
+      }
    } /* IteratedPD */
 
    public void runSteps(int maxSteps) {
@@ -34,8 +36,11 @@ public class IteratedPD extends Object {
          p1Score += pd.getPlayer1Payoff();
          p2Score += pd.getPlayer2Payoff();
 
-         System.out.printf(" t %3d   P1 move %d payoff %d (%3d)   P2 move %d payoff %d (%3d)\n", i, pd.getPlayer1Move(),
-               pd.getPlayer1Payoff(), p1Score, pd.getPlayer2Move(), pd.getPlayer2Payoff(), p2Score);
+         if (RunIPD.debugModeOn) {
+            System.out.printf(" t %3d   P1 move %d payoff %d (%3d)   P2 move %d payoff %d (%3d)\n", i,
+                  pd.getPlayer1Move(), pd.getPlayer1Payoff(), p1Score, pd.getPlayer2Move(), pd.getPlayer2Payoff(),
+                  p2Score);
+         }
 
          /*
           * System.out.printf(" Iteration %d\n", i);
