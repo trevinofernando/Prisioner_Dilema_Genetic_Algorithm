@@ -15,7 +15,9 @@ public class RunIPD extends Object {
       int i;
       int maxSteps = 0;
 
-      Strategy player1, player2;
+      Strategy player1;
+      Strategy player2[] = { new StrategyTitForTat(), new StrategyTitForTwoTats(), new StrategyAlwaysCooperate(),
+            new StrategyAlwaysDefect(), new StrategyRandom() };
       IteratedPD ipd;
 
       for (i = 0; i < args.length; i++) {
@@ -28,8 +30,8 @@ public class RunIPD extends Object {
       } /* for i */
 
       player1 = new StrategyByGA(new BigDecimal(args[0]).doubleValue(), new BigDecimal(args[1]).doubleValue());
-      player2 = new StrategyTitForTat();
-      ipd = new IteratedPD(player1, player2);
+      // player2 = new StrategyTitForTat();
+      ipd = new IteratedPD(player1, player2[Search.r.nextInt() % player2.length]);
 
       ipd.runSteps(maxSteps);
 
