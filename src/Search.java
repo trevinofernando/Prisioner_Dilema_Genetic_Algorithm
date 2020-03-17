@@ -348,6 +348,8 @@ public class Search {
 			problem.doPrintGenes(bestOfRunChromo, summaryOutput);
 
 			System.out.println(R + "\t" + "B" + "\t" + (int) bestOfRunChromo.rawFitness);
+			System.out.println(
+					R + "\t" + "B" + "\t" + bestOfRunChromo.chromo.get(0) + " | " + bestOfRunChromo.chromo.get(1));
 
 		} // End of a Run
 
@@ -366,6 +368,9 @@ public class Search {
 
 		summaryOutput.write("\n");
 		summaryOutput.close();
+
+		System.out.println(
+				R + "\t" + "B" + "\t" + bestOverAllChromo.chromo.get(0) + " | " + bestOverAllChromo.chromo.get(1));
 
 		System.out.println();
 		System.out.println("Start:  " + startTime);
