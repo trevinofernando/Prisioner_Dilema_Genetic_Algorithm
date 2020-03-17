@@ -54,6 +54,7 @@ public class Search {
 	private static double TmemberFitness;
 
 	private static double fitnessStats[][]; // 0=Avg, 1=Best
+	private static double chromoHistory[][];
 
 	/*******************************************************************************
 	 * CONSTRUCTORS *
@@ -83,9 +84,12 @@ public class Search {
 
 		// Set up Fitness Statistics matrix
 		fitnessStats = new double[2][Parameters.generations];
+		chromoHistory = new double[2][Parameters.generations];
 		for (int i = 0; i < Parameters.generations; i++) {
 			fitnessStats[0][i] = 0;
 			fitnessStats[1][i] = 0;
+			chromoHistory[1][i] = 0;
+			chromoHistory[1][i] = 0;
 		}
 
 		// Problem Specific Setup - For new new fitness function problems, create
@@ -195,6 +199,10 @@ public class Search {
 				fitnessStats[0][G] += sumRawFitness / Parameters.popSize;
 				fitnessStats[1][G] += bestOfGenChromo.rawFitness;
 
+				// Save best chormo
+				chromoHistory[0][G] += bestOfGenChromo.chromo.get(0);
+				chromoHistory[1][G] += bestOfGenChromo.chromo.get(1);
+
 				averageRawFitness = sumRawFitness / Parameters.popSize;
 				stdevRawFitness = Math
 						.sqrt(Math.abs(sumRawFitness2 - sumRawFitness * sumRawFitness / Parameters.popSize)
@@ -212,6 +220,8 @@ public class Search {
 				Hwrite.right((int) bestOfGenChromo.rawFitness, 7, summaryOutput);
 				Hwrite.right(averageRawFitness, 11, 3, summaryOutput);
 				Hwrite.right(stdevRawFitness, 11, 3, summaryOutput);
+				summaryOutput.write("\t\t");
+				summaryOutput.write(bestOfGenChromo.chromo.get(0) + " | " + bestOfGenChromo.chromo.get(1) + "\n");
 				summaryOutput.write("\n");
 
 				// *********************************************************************
@@ -357,14 +367,23 @@ public class Search {
 
 		problem.doPrintGenes(bestOverAllChromo, summaryOutput);
 
+		summaryOutput.write("\t");
+		summaryOutput.write(bestOverAllChromo.chromo.get(0) + " | " + bestOverAllChromo.chromo.get(1) + "\n");
+
 		// Output Fitness Statistics matrix
-		summaryOutput.write("Gen                 AvgFit              BestFit \n");
+		summaryOutput.write("Gen                 AvgFit              BestFit                       Chromo\n");
 		for (int i = 0; i < Parameters.generations; i++) {
 			Hwrite.left(i, 15, summaryOutput);
 			Hwrite.left(fitnessStats[0][i] / Parameters.numRuns, 20, 2, summaryOutput);
 			Hwrite.left(fitnessStats[1][i] / Parameters.numRuns, 20, 2, summaryOutput);
+			summaryOutput.write("\t");
+			summaryOutput.write(
+					chromoHistory[0][i] / Parameters.numRuns + " | " + chromoHistory[1][i] / Parameters.numRuns + "\n");
 			summaryOutput.write("\n");
 		}
+
+		summaryOutput.write("\n");
+		summaryOutput.write(bestOfRunChromo.chromo.get(0) + " | " + bestOfRunChromo.chromo.get(1) + "\n");
 
 		summaryOutput.write("\n");
 		summaryOutput.close();
