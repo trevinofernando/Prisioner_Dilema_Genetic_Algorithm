@@ -113,6 +113,7 @@ public class Parameters {
 		output.write("Random Number Seed           :  " + seed + "\n");
 		output.write("Number of Genes/Points       :  " + numGenes + "\n");
 		output.write("Size of Genes                :  " + geneSize + "\n");
+		output.write("Steps                        :  " + maxSteps + "\n");
 
 		output.write("\n\n");
 
