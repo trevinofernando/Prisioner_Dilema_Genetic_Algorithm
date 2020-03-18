@@ -12,8 +12,8 @@ public class IteratedPrisonersDilemma extends FitnessFunction {
     /*******************************************************************************
      * STATIC VARIABLES *
      *******************************************************************************/
-    public static String player2[] = { "StrategyTitForTat", "StrategyTitForTwoTats", "StrategyAlwaysCooperate",
-            "StrategyAlwaysDefect", "StrategyRandom" };
+    public static String player2[] = { "StrategyByGA", "StrategyTitForTat", "StrategyTitForTwoTats",
+            "StrategyAlwaysCooperate", "StrategyAlwaysDefect", "StrategyRandom", "StrategyGrudger" };
 
     /*******************************************************************************
      * CONSTRUCTORS *

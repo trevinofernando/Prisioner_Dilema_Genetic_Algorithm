@@ -17,8 +17,10 @@ public class RunIPD extends Object {
       int maxSteps = 0;
 
       Strategy player1;
-      Strategy player2[] = { new StrategyTitForTat(), new StrategyTitForTwoTats(), new StrategyAlwaysCooperate(),
-            new StrategyAlwaysDefect(), new StrategyRandom() };
+      Strategy player2[] = {
+            new StrategyByGA(new BigDecimal(args[0]).doubleValue(), new BigDecimal(args[1]).doubleValue()),
+            new StrategyTitForTat(), new StrategyTitForTwoTats(), new StrategyAlwaysCooperate(),
+            new StrategyAlwaysDefect(), new StrategyRandom(), new StrategyGrudger() };
       IteratedPD ipd;
 
       for (i = 0; i < args.length; i++) {
