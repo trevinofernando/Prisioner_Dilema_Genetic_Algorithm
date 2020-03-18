@@ -34,7 +34,9 @@ public class RunIPD extends Object {
 
       player1 = new StrategyByGA(new BigDecimal(args[0]).doubleValue(), new BigDecimal(args[1]).doubleValue());
       // player2 = new StrategyTitForTat();
-      ipd = new IteratedPD(player1, player2[Math.abs(Search.r.nextInt()) % player2.length]);
+      // ipd = new IteratedPD(player1, player2[Math.abs(Search.r.nextInt()) %
+      // player2.length]);
+      ipd = new IteratedPD(player1, player2[Integer.parseInt(args[2])]);
 
       ipd.runSteps(maxSteps);
       if (debugModeOn) {

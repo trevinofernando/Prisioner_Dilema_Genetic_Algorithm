@@ -12,6 +12,8 @@ public class IteratedPrisonersDilemma extends FitnessFunction {
     /*******************************************************************************
      * STATIC VARIABLES *
      *******************************************************************************/
+    public static String player2[] = { "StrategyTitForTat", "StrategyTitForTwoTats", "StrategyAlwaysCooperate",
+            "StrategyAlwaysDefect", "StrategyRandom" };
 
     /*******************************************************************************
      * CONSTRUCTORS *
@@ -29,12 +31,15 @@ public class IteratedPrisonersDilemma extends FitnessFunction {
 
     public void doRawFitness(Chromo X) {
         // TODO
-        // System.out.println("doRawFitness not yet implemented for
-        // IteratedPrisonersDilemma");
-        String[] arguments = { Double.toString(X.chromo.get(0)), Double.toString(X.chromo.get(1)), "-L",
-                Integer.toString(Parameters.maxSteps) };
 
-        X.rawFitness = RunIPD.main(arguments);
+        X.rawFitness = 0;
+
+        for (int s = 0; s < player2.length; s++) {
+            String[] arguments = { Double.toString(X.chromo.get(0)), Double.toString(X.chromo.get(1)),
+                    Integer.toString(s), "-L", Integer.toString(Parameters.maxSteps) };
+
+            X.rawFitness += RunIPD.main(arguments);
+        }
 
     }
 
