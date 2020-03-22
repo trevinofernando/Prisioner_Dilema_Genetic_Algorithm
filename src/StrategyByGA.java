@@ -15,22 +15,22 @@ public class StrategyByGA extends Strategy {
 
     // 0 = defect, 1 = cooperate
 
-    public StrategyByGA(double ProbabilityOfCooperatingGivenCooperatation,
-            double ProbabilityOfCooperatingGivenDefectiontion) {
+    public StrategyByGA(double ProbabilityOfCooperatingGivenCooperation,
+            double ProbabilityOfCooperatingGivenDefection) {
 
         name = "Strategy Developed by the Genetic Algorithm";
         opponentLastMove = 1;
-        proCoopGivCoop = ProbabilityOfCooperatingGivenCooperatation;
-        proCoopGivDef = ProbabilityOfCooperatingGivenDefectiontion;
+        proCoopGivCoop = ProbabilityOfCooperatingGivenCooperation;
+        proCoopGivDef = ProbabilityOfCooperatingGivenDefection;
     } /* StrategyByGA */
 
     public int nextMove() {
-        // Default p to ProbabilityOfCooperatingGivenCooperatation
+        // Default p to ProbabilityOfCooperatingGivenCooperation
         double p = proCoopGivCoop;
 
         // If opponentLastMove == defect
         if (opponentLastMove == 0) {
-            // Change p to be ProbabilityOfCooperatingGivenDefectiontion
+            // Change p to be ProbabilityOfCooperatingGivenDefection
             p = proCoopGivDef;
         }
 
