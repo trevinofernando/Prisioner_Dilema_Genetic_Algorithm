@@ -10,6 +10,7 @@ public class StrategyFernandoYaclaudes extends Strategy {
     /**
      * Encoding for a strategy.
      */
+    Random r = new Random();
     double ProbabilityOfCooperatingGivenCooperation = 0.95;
     double ProbabilityOfCooperatingGivenDefection = 0.15;
 
@@ -18,6 +19,7 @@ public class StrategyFernandoYaclaudes extends Strategy {
     public StrategyFernandoYaclaudes() {
         name = "Strategy Developed by Fernando and Yaclaudes";
         opponentLastMove = 1;
+        r.setSeed(75982);
     } /* StrategyFernandoYaclaudes */
 
     public int nextMove() {
@@ -31,7 +33,7 @@ public class StrategyFernandoYaclaudes extends Strategy {
         }
 
         // Decision given on random chance
-        if (p > Search.r.nextDouble()) {
+        if (p > r.nextDouble()) {
             return 1;
         } else {
             return 0;
